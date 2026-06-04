@@ -1,24 +1,30 @@
-import React, { useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
 import { fadeIn, staggerContainer } from '../utils/motion';
 import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
-  const particlesInit = useCallback(async engine => {
-    await loadSlim(engine);
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
   return (
     <section id="home" className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Particle Background */}
       <div className="absolute inset-0 z-0">
+        {init && (
         <Particles
           id="tsparticles"
-          init={particlesInit}
           options={{
             fullScreen: { enable: false },
             background: {
@@ -90,6 +96,7 @@ const Hero = () => {
             detectRetina: true,
           }}
         />
+        )}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
