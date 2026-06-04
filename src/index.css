@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased text-gray-900 bg-primary-light transition-colors duration-300;
+  }
+
+  /* Dark mode global styles */
+  .dark body {
+    @apply text-gray-100 bg-primary-dark;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white bg-opacity-20 backdrop-blur-lg border border-white border-opacity-30 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply bg-gray-900 bg-opacity-40 backdrop-blur-lg border border-gray-700 border-opacity-50 shadow-xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-full border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 dark:hover:text-white transition-all transform hover:scale-105;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-teal-400;
+  }
+}
