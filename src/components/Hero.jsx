@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
 import { fadeIn, staggerContainer } from '../utils/motion';
-import profileImg from '../assets/profile.jpg';
+import profileImg from '../assets/profile.jpeg';
 
 const Hero = () => {
   const [init, setInit] = useState(false);
